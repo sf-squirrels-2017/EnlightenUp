@@ -1,7 +1,7 @@
 <%= form_for @appointment do |appointment| %>
-  <%= appointment.mentor%>
+
   <%= appointment.label :Mentor %><br>
-  <%= appointment.text_field :mentor%><br>
+  <%=appointment.text_field :mentor_id%><br>
   <%= appointment.label :Topic %><br>
   <%= appointment.text_field :topic %><br>
   <%= appointment.label :start_time %><br>

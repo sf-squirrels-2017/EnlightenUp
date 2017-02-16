@@ -1,4 +1,8 @@
-<%= link_to 'Login', 'login' %>
-<%= link_to 'Register', users_path %>
 <%= link_to 'Home', root_path %>
-<%= link_to 'Profile', user_path(current_user) %>
+<% if current_user %>
+  <%= link_to 'Profile', user_path(current_user.id) %>
+  <%= link_to 'Logout', logout_path, :method => :delete %>
+<% else %>
+<%= link_to 'Login', 'login' %>
+<%= link_to 'Register', new_user_path %>
+<% end %>

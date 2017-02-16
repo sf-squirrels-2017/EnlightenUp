@@ -29,8 +29,11 @@ class AppointmentsController < ApplicationController
 
   def update
     puts "----------"
-    p params
-    @appointment.update_attributes(appointment_params)
+    @user = User.find(session[:user_id])
+    p @user
+    puts "88*******"
+    @appointment.update_attributes(student: @user)
+    # @appointment.update_attributes(appointment_params)
     redirect_to appointment_path(@appointment)
   end
 

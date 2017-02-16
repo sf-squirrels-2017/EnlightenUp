@@ -14,7 +14,10 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = appointment.new(article_params)
+    @appointment = Appointment.new(appointment_params)
+    puts "*****************************"
+    p appointment_params
+    p @appointment
     if @appointment.save
       redirect_to appointments_path(@appointment)
     else
@@ -40,7 +43,7 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:student)
+    params.require(:appointment).permit(:start_time)
   end
 
   def set_appointment

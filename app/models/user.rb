@@ -5,5 +5,5 @@ class User < ApplicationRecord
   validates :name, :email, :password_digest, :phase, presence: true
 
   has_secure_password
-  
+
 end

@@ -1,0 +1,12 @@
+<%= form_for @appointment do |appointment| %>
+  <%= appointment.mentor%>
+  <%= appointment.label :Mentor %><br>
+  <%= appointment.text_field :mentor%><br>
+  <%= appointment.label :Topic %><br>
+  <%= appointment.text_field :topic %><br>
+  <%= appointment.label :start_time %><br>
+  <%= appointment.datetime_field :start_time %><br>
+  <%= appointment.label :student %><br>
+  <%= appointment.text_field :student %><br>
+  <%= appointment.submit %>
+<%end%>

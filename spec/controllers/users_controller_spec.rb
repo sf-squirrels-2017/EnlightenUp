@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 describe UsersController do
-  let!(:user) { User.create!( name: 'Jadzia',
-                              email: 'jadzia@jadzia.com',
-                              password:'password',
-                              expertise: 'stuff & junk',
-                              phase: 3,
-                              is_mentor: true )}
+  let(:user) { User.create!( name: 'Jadzia',
+                             email: 'jadzia@jadzia.com',
+                             password: 'password',
+                             expertise: 'stuff & junk',
+                             phase: 3,
+                             is_mentor: true )}
 
   describe 'GET #new' do
     it 'responds with status code 200' do
@@ -21,23 +21,24 @@ describe UsersController do
 
     it 'renders the :new template' do
       get :new
-      expect(response).to render template(:new)
+      expect(response).to render_template(:new)
     end
   end
 
   describe 'POST #create' do
     context 'when valid params are passed'
-      let!(:valid_params) { { name: 'Jadzia',
-                              email: 'jadzia@jadzia.com',
-                              password:'password',
-                              expertise: 'stuff & junk',
-                              phase: 3,
-                              is_mentor: true } }
-      let!(:post_user) { post :create, valid_params }
+      let(:valid_params) { { name: 'Jadzia',
+                             email: 'jadzia@jadzia.com',
+                             password: 'password',
+                             expertise: 'stuff & junk',
+                             phase: 3,
+                             is_mentor: true } }
+
+      let(:post_user) { post :create, params: { user: valid_params } }
 
       before(:each) do |example|
-        unless example.metadata[:skip_post]
-        post_user
+        unless example.metadata[:skip_pre_post]
+          post_user
         end
       end
 
@@ -45,7 +46,13 @@ describe UsersController do
         expect(response).to have_http_status 302
       end
 
-      it 'assigns the newly create game as @user' do
+      it 'creates a new user in the database', skip_pre_post: true do
+        pre_count = User.all.count
+        post_user
+        expect(User.all.count).to eq(pre_count + 1)
+      end
+
+      it 'assigns the newly create user as @user' do
         expect(assigns(:user).id).to eq(User.last.id)
       end
 
@@ -55,6 +62,8 @@ describe UsersController do
     end
 
     # context 'when invalid params are passed' do
-    #   let!(:invalid_params).to
+    #   let!(:invalid_params) { { name: nil } }
+    #
+    #   # let!()
     # end
 end

@@ -26,7 +26,7 @@ users_array = 26.times.map do
 end
 
 mentors_array = users_array.find_all do |user|
-  user.is_mentor = true
+  user.is_mentor == true
 end
 
 students_array = users_array - mentors_array
@@ -34,7 +34,6 @@ students_array = users_array - mentors_array
 
 appointments_array = []
 
-# binding.pry
 mentors_array.each do |mentor|
   number_of_slots = rand(1..4)
   number_of_slots.times.map do
@@ -45,13 +44,11 @@ mentors_array.each do |mentor|
 end
 
 available_appointments = appointments_array.find_all do |appointment|
-  appointment.student_id =  nil
+  appointment.student_id == nil
 end
-
-
 
 students_array.each do |student|
   if available_appointments != []
-    available_appointments.sample.student_id = student.id
+    available_appointments.sample.update_attributes( student_id: student.id )
   end
 end

@@ -28,17 +28,17 @@ class AppointmentsController < ApplicationController
   end
 
   def update
-    if @appointment.update(appointment_params)
-      redirect_to appointment_path(@appointment)
-    else
-      render :edit
-    end
+    puts "----------"
+    p params
+    @appointment.update_attributes(appointment_params)
+    redirect_to appointment_path(@appointment)
   end
+
     
   private
 
   def appointment_params
-    params.require(:appointment).permit(:student, :mentor, :start_time, :topic)
+    params.require(:appointment).permit(:student)
   end
 
   def set_appointment

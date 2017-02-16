@@ -1,13 +1,17 @@
 <%userid = session[:user_id]%>
 <%user = User.find(userid) %>
-<%if user.is_mentor == true%>
+<%result =user.is_mentor%>
+<%if result == false %>
   <%= form_for @appointment do |a| %>
     <h4>Mentor: <%= @appointment.mentor.name %></h4>
      <h4>Topic: <%= @appointment.topic %></h4>
      <h4>Start_time: <%= @appointment.start_time %></h4>  
     <%= a.submit "Book Appointment"%>
   <%end%>
+<%else%>
+  else statement
+<%end%>
 
   
   
-<%end%>
+

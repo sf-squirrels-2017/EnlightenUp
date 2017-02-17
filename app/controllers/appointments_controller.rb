@@ -24,23 +24,29 @@ class AppointmentsController < ApplicationController
 
   
   def edit
-    @appointment = Appointment.find(params[:id])
+    if session[:user_id] != nil
+      @appointment = Appointment.find(params[:id])
+    else
+      redirect_to login_url
+    end
   end
 
   def update
-    puts "----------"
-    @user = User.find(session[:user_id])
-    p @user
-    puts "88*******"
-    @appointment.update_attributes(student: @user)
-    redirect_to appointment_path(@appointment)
+    if session[:user_id] != @appointment.mentor_id
+      @user = User.find(session[:user_id])
+      @appointment.update_attributes(student: @user)
+      redirect_to appointment_path(@appointment)
+    else
+      @appointment.update_attributes(appointment_params)
+      redirect_to appointment_path(@appointment)
+    end
   end
 
     
   private
 
   def appointment_params
-    params.require(:appointment).permit(:start_time)
+    params.require(:appointment).permit(:start_time, :topic)
   end
 
   def set_appointment

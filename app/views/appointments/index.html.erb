@@ -1,7 +1,6 @@
 <h3>Appointments</h3>
 <%@appointments.each do |appointment|%>
   <p><p>
-
   <% if appointment.student_id == nil %>
     Mentor: <%=appointment.mentor.name %><br>
     Topic: <%=appointment.topic %><br>

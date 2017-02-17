@@ -6,4 +6,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  def booked_appointments
+  	self.mentor_appointments.find_all{|a| a.student_id}
+  end
 end

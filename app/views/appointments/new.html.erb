@@ -1,1 +1,5 @@
-new.html.erb
+<%= form_for @appointment do |a| %>
+  <%= a.label :start_time %><br>
+  <%= a.datetime_field :start_time %><br> 
+  <%= a.submit "Make Appointment"%>
+<%end%>

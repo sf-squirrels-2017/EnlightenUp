@@ -18,7 +18,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
+    @appointments = Appointment.where(mentor: User.find(session[:user_id]))
+    user = User.find(session[:user_id])
     if is_current_user?(@user)
       render 'show'
     elsif !is_current_user?(@user) && @user.is_mentor?

@@ -1,11 +1,18 @@
-<h3>Appointments</h3>
-
+<h3>In learning you will teach, and in teaching you will learn</h3>
 <%@appointments.each do |appointment|%>
-  <h4>Appointment</h4>
-  Mentor:<%= link_to appointment.mentor.name, appointment.mentor %><br>
-  Topic: <%=appointment.topic %><br>
-  Time: <%=appointment.start_time %>
-  <%= link_to 'book appointment', edit_appointment_path(appointment) %>
+  <p><p>
+  <div class="form-font">
+    <% if appointment.student_id == nil %>
+      Mentor: <%=appointment.mentor.name %><br>
+      Topic: <%=appointment.topic %><br>
+      Schedule: <%=appointment.start_time.to_s(:short) %><br>
+      <% if session[:user_id] == appointment.mentor_id%>
+        <%= link_to 'edit appointment', edit_appointment_path(appointment) %>
+      <%else%>
+        <%= link_to 'Book appointment', edit_appointment_path(appointment) %>
+      <%end%>
+    <% end %>
+  </div>
 <%end%>
 
 

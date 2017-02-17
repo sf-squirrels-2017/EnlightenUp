@@ -1,12 +1,23 @@
-<%= form_for @appointment do |appointment| %>
-
-  <%= appointment.label :Mentor %><br>
-  <%=appointment.text_field :mentor_id%><br>
-  <%= appointment.label :Topic %><br>
-  <%= appointment.text_field :topic %><br>
-  <%= appointment.label :start_time %><br>
-  <%= appointment.datetime_field :start_time %><br>
-  <%= appointment.label :student %><br>
-  <%= appointment.text_field :student %><br>
-  <%= appointment.submit %>
+<% if session[:user_id] != @appointment.mentor_id%>
+  <%= form_for @appointment do |a| %>
+    <h4>Mentor: <%= @appointment.mentor.name %></h4>
+    <h4>Topic: <%= @appointment.topic %></h4>
+    <h4>Start_time: <%= @appointment.start_time %></h4> 
+      <%= a.submit "Book Appointment"%>
+  <%end%>
+<%else%>
+  <%= form_for @appointment do |a| %>
+    <h4>Mentor: <%= @appointment.mentor.name %></h4>
+    <%= a.datetime_field :start_time %><br>  
+    <%= a.text_field :topic %><br> 
+    <%= logged_in? %> 
+    <%= session[:user_id]%>
+    <% if logged_in? %>
+      <%= a.submit "Edit Appointment"%>
+    <% end %>
+  <%end%>
 <%end%>
+
+  
+  
+

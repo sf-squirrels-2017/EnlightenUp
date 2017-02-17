@@ -9,3 +9,19 @@
 .navbar-default .navbar-brand {
     color: white;
 }
+
+body {
+   background-image: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%,rgba(255,255,255,0.9) 100%), image-url('coding.jpg');
+}
+
+.form-font {
+  font-size: 18px;
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: gray;
+    width: 300px
+}

@@ -1,5 +1,5 @@
-<h1><% if is_current_user?(@user) %>Hello,<% end %>
-  <%=@user.name%>.</h1>
+
+<h3><%=@user.name%></h3>
 
 <p>Email: <%=@user.email%></p>
 
@@ -11,13 +11,16 @@
 
 <% if @user.is_mentor %>
 <p>Expertise: <%=@user.expertise%></p>
+
 <% end %>
 
 <%if @user.id == session[:user_id] %>
   <% if @user.booked_appointments.any? %>
+
 		<h3>Your Appointments:</h3>
-		<table>
+		<table border=2>
 			<tr>
+				<th>Topic</th>
 				<th>Time</th>
 
         <% if @user.is_mentor %>
@@ -27,19 +30,13 @@
         <% end %>
 
 				<th>Student</th>
-				<th>Topic</th>
-			</tr>
-				<% @user.booked_appointments.each do |a| %>
+			</tr> 
+				<% @appointments.each do |a| %>
 		  <tr>
-		  		<td><%=a.start_time%></td>
-
-          <% if @user.is_mentor %>
-		  		    <td><%=a.student.name%></td>
-          <% else %>
-              <td><%=a.mentor.name%></td>
-          <% end %>
 
 		  		<td><%=a.topic%></td>
+		  		<td><%=a.start_time.to_s(:short)%></td>
+		  		<td><% if a.student!=nil %><%=a.student.name%><%end%></td>
 		  </tr>
 		  	<% end %>
 		</table>

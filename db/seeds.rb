@@ -33,12 +33,13 @@ students_array = users_array - mentors_array
 
 
 appointments_array = []
-
+topic = ["Ruby", "Javascript", "JQuery", "Sinatra", "Ruby on Rails", "ERB", "Slim", "CSS", "HTML"]
 mentors_array.each do |mentor|
   number_of_slots = rand(1..4)
   number_of_slots.times.map do
     new_appointment = Appointment.create!( mentor_id: mentor.id,
-                                           start_time: datetime_in_next_week)
+                                           start_time: datetime_in_next_week,
+                                           topic: topic[rand(8)])
     appointments_array << new_appointment
   end
 end

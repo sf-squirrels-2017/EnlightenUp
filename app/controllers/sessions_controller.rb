@@ -12,7 +12,7 @@ def create
     redirect_to @user
   else
     flash[:danger] = "Invalid email and/or password."
-    render_new
+    render 'new'
   end
 end
 

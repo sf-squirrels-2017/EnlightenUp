@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-
+      login(@user)
       flash[:success] = "Welcome to EnlightenUp"
       redirect_to @user
     else
@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @appointments = Appointment.where(mentor: User.find(session[:user_id]))
 
     if is_current_user?(@user)
       render 'show'

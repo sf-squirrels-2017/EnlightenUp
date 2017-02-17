@@ -11,8 +11,10 @@
       <%= f.label :email %><br>
       <%= f.email_field :email %><br>
 
-      <%= f.label :expertise %><br>
-      <%= f.text_field :expertise %><br>
+      <% if @user.is_mentor %>
+        <%= f.label :expertise %><br>
+        <%= f.text_field :expertise %><br>
+      <% end %>
 
       <%= f.submit "SignUp" %>
     <% end %>

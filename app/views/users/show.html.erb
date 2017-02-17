@@ -19,15 +19,16 @@
         <% else %>
             <th>Mentor</th>
         <% end %>
-                <th>Student</th>
-            </tr>
-                <% @appointments.each do |a| %>
-          <tr>
-                <td><%=a.topic%></td>
-                <td><%=a.start_time.to_s(:short)%></td>
-                <td><% if a.student!=nil %><%=a.student.name%><%end%></td>
-          </tr>
-            <% end %>
-        </table>
+				<th>Student</th>
+			</tr>
+				<% @appointments.each do |a| %>
+		  <tr>
+
+		  		<td><%=a.topic%></td>
+		  		<td><%=a.start_time.to_s(:short)%></td>
+		  		<td><% if a.student!=nil %><%=a.student.name%><%end%></td>
+		  </tr>
+		  	<% end %>
+		</table>
   <% end %>
 <% end %>

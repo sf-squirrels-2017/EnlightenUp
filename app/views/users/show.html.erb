@@ -7,6 +7,7 @@
 
 <p>Expertise: <%=@user.expertise%></p>
 <p><%=link_to 'Edit Profile', edit_user_path(@user)%>
+<p><%=link_to 'Create Appointment', new_appointment_path%>
 	<%if @user.id == session[:user_id] %>
 		<h3>Your Appointments:</h3>
 		<table border=2>
@@ -25,3 +26,4 @@
 		</table>  		
 	<%end%>
 <% end %>
+

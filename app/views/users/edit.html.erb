@@ -1,0 +1,18 @@
+<h1>Registration</h1>
+
+    <%= form_for(@user) do |f| %>
+
+      <%= f.label :name %><br>
+      <%= f.text_field :name %><br>
+
+      <%= f.label :phase %><br>
+      <%= f.select :phase, options_for_select([0, 1, 2, 3, 4]) %><br>
+
+      <%= f.label :email %><br>
+      <%= f.email_field :email %><br>
+
+      <%= f.label :expertise %><br>
+      <%= f.text_field :expertise %><br>
+
+      <%= f.submit "SignUp" %>
+    <% end %>

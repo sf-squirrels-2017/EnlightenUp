@@ -1,10 +1,10 @@
-<h3>Appointment Details </h3>
+<h3>Appointments</h3>
+
 <%@appointments.each do |appointment|%>
   <h4>Appointment</h4>
- <!--   <%=appointment.student.name %><br> -->
-  Mentor: <%=appointment.mentor.name %><br>
+  Mentor:<%= link_to appointment.mentor.name, appointment.mentor %><br>
   Topic: <%=appointment.topic %><br>
-  start_time: <%=appointment.start_time %>
+  Time: <%=appointment.start_time %>
   <%= link_to 'book appointment', edit_appointment_path(appointment) %>
 <%end%>
 

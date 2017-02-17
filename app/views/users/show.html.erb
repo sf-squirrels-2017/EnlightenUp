@@ -1,27 +1,25 @@
-<h1>Hello, <%=@user.name%>.</h1>
+<h3>Hello <%=@user.name%>,</h3>
 
 <p>Email: <%=@user.email%></p>
 
 <p>Phase: <%=@user.phase%></p>
-<p><%=link_to 'Edit Profile', edit_user_path(@user)%>
-
 <% if @user.is_mentor %>
 
 <p>Expertise: <%=@user.expertise%></p>
-	
+<p><%=link_to 'Edit Profile', edit_user_path(@user)%>
 	<%if @user.id == session[:user_id] %>
 		<h3>Your Appointments:</h3>
-		<table>
+		<table border=2>
 			<tr>
+				<th>Topic</th>
 				<th>Time</th>
 				<th>Student</th>
-				<th>Topic</th>
 			</tr> 
-				<% @user.booked_appointments.each do |a| %>
+				<% @appointments.each do |a| %>
 		  <tr>
-		  		<td><%=a.start_time%></td>
-		  		<td><%=a.student.name%></td>
 		  		<td><%=a.topic%></td>
+		  		<td><%=a.start_time.to_s(:short)%></td>
+		  		<td><% if a.student!=nil %><%=a.student.name%><%end%></td>
 		  </tr>
 		  	<% end %>
 		</table>  		

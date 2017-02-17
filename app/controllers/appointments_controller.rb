@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: [:show, :edit, :update]
 
   def index
-    @appointments = Appointment.all
+    @appointments = Appointment.order(:start_time)
   end
   
   def show

@@ -9,3 +9,13 @@
 .navbar-default .navbar-brand {
     color: white;
 }
+
+.navbar-default .navbar-nav > li > a:hover {
+    background-color: white;
+    color: #393f4d !important;
+}
+
+// .navbar-brand a:hover {
+//     background-color: white;
+//     color: #393f4d;
+// }

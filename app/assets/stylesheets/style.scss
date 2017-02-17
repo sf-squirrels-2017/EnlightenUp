@@ -10,6 +10,13 @@
     color: white;
 }
 
+
+.navbar-default .navbar-nav > li > a:hover {
+    background-color: white;
+    color: #393f4d !important;
+}
+
+
 body {
    background-image: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%,rgba(255,255,255,0.9) 100%), image-url('coding.jpg');
 }
@@ -25,3 +32,4 @@ table {
     border-color: gray;
     width: 300px
 }
+>>>>>>> bedaf423b41495e623b70c8207d68681cd464f75

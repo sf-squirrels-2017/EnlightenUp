@@ -17,11 +17,9 @@ class AppointmentsController < ApplicationController
     @appointment = Appointment.new(appointment_params)
     @appointment.mentor_id = session[:user_id]
     if @appointment.save
-      p "savveeeeeeee"
       redirect_to appointment_path(@appointment)
     end
   end
-
   
   def edit
     if session[:user_id] != nil

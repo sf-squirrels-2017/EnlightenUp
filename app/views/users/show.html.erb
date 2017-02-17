@@ -11,7 +11,7 @@
 <p><%=link_to 'Create Appointment', new_appointment_path%>
 <% end %>
 
-<%if @user.id == session[:user_id] %>
+<%if session[:user_id] != nil %>
 
         <h3>Your Appointments:</h3>
         <table border=2>

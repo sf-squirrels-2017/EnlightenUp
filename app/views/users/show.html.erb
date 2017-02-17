@@ -1,5 +1,10 @@
 <h1>Hello, <%=@user.name%>.</h1>
 
 <p>Email: <%=@user.email%></p>
-<p>Expertise: <%=@user.expertise%></p>
+
+<% if @user.is_mentor? %>
+  <p>Expertise: <%=@user.expertise%></p>
+<% end %>
+
 <p>Phase: <%=@user.phase%></p>
+<p><%=link_to 'Edit Profile', edit_user_path(@user)%>

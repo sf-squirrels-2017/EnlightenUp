@@ -4,7 +4,7 @@ class AppointmentsController < ApplicationController
   def index
     @appointments = Appointment.order(:start_time)
   end
-  
+
   def show
     @appointment = Appointment.find(params[:id])
   end
@@ -20,7 +20,7 @@ class AppointmentsController < ApplicationController
       redirect_to appointment_path(@appointment)
     end
   end
-  
+
   def edit
     if session[:user_id] != nil
       @appointment = Appointment.find(params[:id])
@@ -40,7 +40,11 @@ class AppointmentsController < ApplicationController
     end
   end
 
-    
+  def calendar
+    @appointments = Appointment.order(:start_time)
+    render '/calendar'
+  end
+
   private
 
   def appointment_params

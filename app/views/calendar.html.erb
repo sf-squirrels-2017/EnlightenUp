@@ -1,0 +1,11 @@
+<%= week_calendar number_of_weeks: 2, events: @appointments do |date, appointments| %>
+  <%= date %>
+
+  <% appointments.each do |appointment| %>
+    <div>
+      <%= link_to appointment.mentor.name, appointment%>:
+      <%= appointment.start_time.strftime("%H:%M") %>
+
+    </div>
+  <% end %>
+<% end %>

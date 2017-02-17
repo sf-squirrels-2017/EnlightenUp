@@ -5,9 +5,12 @@
       <%= f.label :name %><br>
       <%= f.text_field :name %><br>
 
-       <%= f.label :phase %><br>
+      <%= f.label :phase %><br>
       <%= f.select :phase, options_for_select([0, 1, 2, 3, 4]) %><br>
 
+      <%= f.label :is_mentor, "Roll" %><br>
+      <%= f.radio_button :is_mentor, true %> Mentor <br>
+      <%= f.radio_button :is_mentor, false %> Student <br>
 
       <%= f.label :email %><br>
       <%= f.email_field :email %><br>
@@ -16,6 +19,6 @@
       <%= f.password_field :password %><br>
       <%= f.password_field :password_confirmation %><br>
 
-      <%= f.submit "SignUp" %>
+      <%= f.submit "Sign Up" %>
     <% end %>
 

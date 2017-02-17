@@ -7,6 +7,7 @@
   <%= appointment.label :start_time %><br>
   <%= appointment.datetime_field :start_time %><br>
   <%= appointment.label :student %><br>
-  <%= appointment.text_field :student %><br>
-  <%= appointment.submit %>
+  <%= appointment.text_field :student %><br><br>
+  <%= appointment.submit "Book", class: "btn btn-primary" %>
+
 <%end%>

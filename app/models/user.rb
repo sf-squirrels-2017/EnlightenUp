@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_secure_password
 
   def booked_appointments
-  	self.mentor_appointments.find_all{|a| a.student_id}
+  	booked_mentor_appointments = self.mentor_appointments.find_all{|a| a.student_id}
+
+    return booked_mentor_appointments if !booked_mentor_appointments.empty?
+    self.student_appointments
   end
 end

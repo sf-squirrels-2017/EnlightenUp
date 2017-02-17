@@ -1,27 +1,44 @@
-<h3>Hello <%=@user.name%>,</h3>
+
+<h3><%=@user.name%></h3>
 
 <p>Email: <%=@user.email%></p>
 
 <p>Phase: <%=@user.phase%></p>
-<% if @user.is_mentor %>
 
+<% if is_current_user?(@user) %>
+  <p><%=link_to 'Edit Profile', edit_user_path(@user)%>
+<% end %>
+
+<% if @user.is_mentor %>
 <p>Expertise: <%=@user.expertise%></p>
-<p><%=link_to 'Edit Profile', edit_user_path(@user)%>
-	<%if @user.id == session[:user_id] %>
+
+<% end %>
+
+<%if @user.id == session[:user_id] %>
+  <% if @user.booked_appointments.any? %>
+
 		<h3>Your Appointments:</h3>
 		<table border=2>
 			<tr>
 				<th>Topic</th>
 				<th>Time</th>
+
+        <% if @user.is_mentor %>
+            <th>Student</th>
+        <% else %>
+            <th>Mentor</th>
+        <% end %>
+
 				<th>Student</th>
 			</tr> 
 				<% @appointments.each do |a| %>
 		  <tr>
+
 		  		<td><%=a.topic%></td>
 		  		<td><%=a.start_time.to_s(:short)%></td>
 		  		<td><% if a.student!=nil %><%=a.student.name%><%end%></td>
 		  </tr>
 		  	<% end %>
-		</table>  		
-	<%end%>
+		</table>
+  <% end %>
 <% end %>

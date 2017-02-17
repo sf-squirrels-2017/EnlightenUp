@@ -31,6 +31,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+
+    if is_current_user?(@user)
+      render 'edit'
+    else
+      render '/not_authorized'
+    end
   end
 
   def update

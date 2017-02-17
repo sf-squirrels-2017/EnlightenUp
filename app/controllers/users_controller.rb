@@ -24,8 +24,9 @@ end
 
 
 private
+
 def user_params
-  params.require(:user).permit(:name, :phase, :email, :password)
+  params.require(:user).permit(:name, :phase, :is_mentor, :email, :password)
 end
 
 end

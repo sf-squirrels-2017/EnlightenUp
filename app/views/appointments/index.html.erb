@@ -7,7 +7,7 @@
       Topic: <%=appointment.topic %><br>
       Schedule: <%=appointment.start_time.to_s(:short) %><br>
       <% if session[:user_id] == appointment.mentor_id%>
-        <%= link_to 'edit appointment', edit_appointment_path(appointment) %>
+        <%= link_to 'Edit appointment', edit_appointment_path(appointment) %>
       <%else%>
         <%= link_to 'Book appointment', edit_appointment_path(appointment) %>
       <%end%>

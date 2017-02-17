@@ -12,7 +12,7 @@
 <% end %>
 
 <%if @user.id == session[:user_id] %>
-  <% if @user.booked_appointments.any? %>
+
         <h3>Your Appointments:</h3>
         <table border=2>
             <tr>
@@ -28,9 +28,14 @@
 		  <tr>
 		  		<td><%=a.topic%></td>
 		  		<td><%=a.start_time.to_s(:short)%></td>
-		  		<td><% if a.student!=nil %><%=a.student.name%><%end%></td>
+		  		<td><% if @user.is_mentor %>
+			  		<%=a.student.name%>
+			  		<% else %>
+			  		<%=a.mentor.name%>
+			  		<%end%>
+		  		</td>
 		  </tr>
 		  	<% end %>
 		</table>
-  <% end %>
+
 <% end %>

@@ -19,7 +19,7 @@ users_array = 26.times.map do
 
   User.create!( name: Faker::Name.first_name,
                 email: Faker::Internet.email,
-                password_digest: 'password', # this should be the encrypted password
+                password: 'password', # this should be the encrypted password
                 phase: current_phase,
                 is_mentor: flip_result,
                 expertise: subject_matter)

@@ -1,24 +1,40 @@
 <h1>Registration</h1>
-
-    <%= form_for(@user) do |f| %>
-
-      <%= f.label :name %><br>
-      <%= f.text_field :name %><br>
-
-      <%= f.label :phase %><br>
-      <%= f.select :phase, options_for_select([0, 1, 2, 3, 4]) %><br>
-
-      <%= f.label :is_mentor, "Roll" %><br>
-      <%= f.radio_button :is_mentor, true %> Mentor <br>
-      <%= f.radio_button :is_mentor, false %> Student <br>
-
-      <%= f.label :email %><br>
-      <%= f.email_field :email %><br>
-
-      <%= f.label :password %><br>
-      <%= f.password_field :password %><br>
-      <%= f.password_field :password_confirmation %><br>
-
-      <%= f.submit "Sign Up" %>
-    <% end %>
-
+	<div class="jumbotron">
+		<%= form_for(@user) do |f| %>
+		<div class="form-group">
+			<%= f.label :name %><br>
+			<div class="col-lg-10">
+			<%= f.text_field :name %><br>
+			</div>
+		</div>
+ 		<div class="form-group">
+			<%= f.label :phase %><br>
+			<div class="col-lg-10">
+			<%= f.select :phase, options_for_select([0, 1, 2, 3, 4]) %><br>
+			</div>
+		</div>
+ 		<div class="form-group">
+			<%= f.label :is_mentor, "Roll" %><br>
+			<div class="col-lg-10">
+			<%= f.radio_button :is_mentor, true %> Mentor <br>
+			<%= f.radio_button :is_mentor, false %> Student <br>
+			</div>
+		</div>
+		<div class="form-group">
+			<%= f.label :email %><br>
+			<div class="col-lg-10">
+			<%= f.email_field :email %><br>
+			</div>
+		</div>
+ 		<div class="form-group">
+ 			<div class="col-lg-10">
+			<%= f.password_field :password %><br>
+			</div>
+			<%= f.label :password %><br>
+			<div class="col-lg-10">
+			<%= f.password_field :password_confirmation %><br>
+			</div>
+		</div>
+				<%= f.submit "Sign Up", class: "btn btn-primary" %>
+		<% end %>
+</div>

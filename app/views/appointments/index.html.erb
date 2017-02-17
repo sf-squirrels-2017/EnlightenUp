@@ -1,11 +1,13 @@
-<h3>Appointments</h3>
+<h1>Appointments</h1> <br>
 
 <%@appointments.each do |appointment|%>
-  <h4>Appointment</h4>
-  Mentor:<%= link_to appointment.mentor.name, appointment.mentor %><br>
-  Topic: <%=appointment.topic %><br>
-  Time: <%=appointment.start_time %>
-  <%= link_to 'book appointment', edit_appointment_path(appointment) %>
+  <div class="divider">
+   <!--  <h4>Appointment</h4> -->
+    Mentor: <%= link_to appointment.mentor.name, appointment.mentor %><br>
+    Topic: <%=appointment.topic %><br>
+    Time: <%=appointment.start_time %><br><br>
+    <%= link_to 'book session', edit_appointment_path(appointment), class: "book" %>
+</div> <br>
 <%end%>
 
 

@@ -5,24 +5,25 @@
 <p>Phase: <%=@user.phase%></p>
 <p><%=link_to 'Edit Profile', edit_user_path(@user)%>
 
-<% if @user.is_mentor? %>
+<% if @user.is_mentor %>
 
 <p>Expertise: <%=@user.expertise%></p>
-
-
-<table>
-	<tr>
-		<th>Time:</th>
-		<th>Student:</th>
-		<th>Topic:</th>
-	</tr> 
-	<% @user.booked_appointments.each do |a| %>
-  <tr>
-  		<td><%=a.start_time%></td>
-  		<td><%=a.student.name%></td>
-  		<td><%=a.topic%></td>
-  </tr>
-  <% end %>
-</table>  		
-
+	
+	<%if @user.id == session[:user_id] %>
+		<h3>Your Appointments:</h3>
+		<table>
+			<tr>
+				<th>Time</th>
+				<th>Student</th>
+				<th>Topic</th>
+			</tr> 
+				<% @user.booked_appointments.each do |a| %>
+		  <tr>
+		  		<td><%=a.start_time%></td>
+		  		<td><%=a.student.name%></td>
+		  		<td><%=a.topic%></td>
+		  </tr>
+		  	<% end %>
+		</table>  		
+	<%end%>
 <% end %>

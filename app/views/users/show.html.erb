@@ -5,13 +5,14 @@
 
 <p>Phase: <%=@user.phase%></p>
 
-<% if is_current_user?(@user) %>
-  <p><%=link_to 'Edit Profile', edit_user_path(@user)%>
-<% end %>
 
 <% if @user.is_mentor %>
 <p>Expertise: <%=@user.expertise%></p>
+<% end %>
 
+<% if is_current_user?(@user) %>
+<p><%=link_to 'Edit Profile', edit_user_path(@user)%>
+<p><%=link_to 'Create Appointment', new_appointment_path(@user)%>
 <% end %>
 
 <%if @user.id == session[:user_id] %>
@@ -29,7 +30,6 @@
             <th>Mentor</th>
         <% end %>
 
-				<th>Student</th>
 			</tr>
 				<% @appointments.each do |a| %>
 		  <tr>

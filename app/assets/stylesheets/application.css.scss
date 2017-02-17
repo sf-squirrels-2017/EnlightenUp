@@ -19,4 +19,10 @@
 @import "users.scss";
 @import "appointments.scss";
 @import "sessions.scss";
+@import "style.scss";
+
+.navbar-default .navbar-nav > li > a {
+  color:white !important;
+}
+
 

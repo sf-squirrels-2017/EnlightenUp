@@ -1,11 +1,14 @@
 <h3><%=@user.name%></h3>
 <p>Email: <%=@user.email%></p>
 <p>Phase: <%=@user.phase%></p>
+
 <% if @user.is_mentor %>
-<% if is_current_user?(@user) %>
-  <p><%=link_to 'Edit Profile', edit_user_path(@user)%>
-<% end %>
 <p>Expertise: <%=@user.expertise%></p>
+<% end %>
+
+<% if is_current_user?(@user) %>
+<p><%=link_to 'Edit Profile', edit_user_path(@user)%>
+<p><%=link_to 'Create Appointment', new_appointment_path(@user)%>
 <% end %>
 <%if @user.id == session[:user_id] %>
   <% if @user.booked_appointments.any? %>
@@ -19,7 +22,6 @@
         <% else %>
             <th>Mentor</th>
         <% end %>
-				
 			</tr>
 				<% @appointments.each do |a| %>
 		  <tr>

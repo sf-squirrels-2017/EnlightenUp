@@ -1,0 +1,41 @@
+<h3><%=@user.name%></h3>
+<p>Email: <%=@user.email%></p>
+<p>Phase: <%=@user.phase%></p>
+
+<% if @user.is_mentor %>
+<p>Expertise: <%=@user.expertise%></p>
+<% end %>
+<p><%=link_to 'Edit Profile', edit_user_path(@user)%>
+
+<% if current_user.is_mentor %>
+<p><%=link_to 'Create Appointment', new_appointment_path%>
+<% end %>
+
+<%if logged_in? %>
+
+        <h3>Your Appointments:</h3>
+        <table border=2>
+            <tr>
+                <th>Topic</th>
+                <th>Time</th>
+        <% if @user.is_mentor %>
+            <th>Student</th>
+        <% else %>
+            <th>Mentor</th>
+        <% end %>
+			</tr>
+				<% @appointments.each do |a| %>
+		  <tr>
+		  		<td><%=a.topic%></td>
+		  		<td><%=a.start_time.to_s(:short)%></td>
+		  		<td><% if @user.is_mentor %>
+			  		<%=a.student.name%>
+			  		<% else %>
+			  		<%=a.mentor.name%>
+			  		<%end%>
+		  		</td>
+		  </tr>
+		  	<% end %>
+		</table>
+
+<% end %>

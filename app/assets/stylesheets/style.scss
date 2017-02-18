@@ -33,6 +33,13 @@ table {
     width: 300px
 }
 
+.app-border {
+  padding: 15px;
+  border: dotted black 1px;
+}
+
+
+
 .simple-calendar {
   .day {
     border-color: black;
@@ -81,3 +88,4 @@ h3:hover {
   color: #A3E4D7;
   background-color: grey;
 }
+

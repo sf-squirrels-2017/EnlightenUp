@@ -3,6 +3,8 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = Appointment.order(:start_time)
+    @appt = Appointment.all
+    @open = @appt.select { |app|  app.student_id == nil }
   end
 
   def show

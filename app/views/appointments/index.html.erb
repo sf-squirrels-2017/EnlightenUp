@@ -1,16 +1,24 @@
 <h3>In learning you will teach, and in teaching you will learn</h3>
-<%@appointments.each do |appointment|%>
-  <p><p>
-  <div class="form-font">
-    <% if appointment.student_id == nil %>
-      Mentor: <%= link_to appointment.mentor.name, appointment.mentor %><br>
-      Topic: <%=appointment.topic %><br>
-      Schedule: <%=appointment.start_time.to_s(:short) %><br>
-      <% if session[:user_id] == appointment.mentor_id%>
-        <%= link_to 'Edit appointment', edit_appointment_path(appointment) %>
-      <%else%>
-        <%= link_to 'Book appointment', edit_appointment_path(appointment) %>
-      <%end%>
-    <% end %>
-  </div>
-<%end%>
+<br><br>
+<div class="container">
+  <div class="row">
+    <% @open.each do |appointment| %>
+      <div class="col-md-4 app-border">
+        <% if appointment.student_id == nil %>
+          Mentor: <%= link_to appointment.mentor.name, appointment.mentor %><br>
+          Topic: <%=appointment.topic %><br>
+          Schedule: <%=appointment.start_time.to_s(:short) %><br>
+            <% if session[:user_id] == appointment.mentor_id%>
+              <%= link_to 'Edit appointment', edit_appointment_path(appointment) %>
+            <%else%>
+              <%= link_to 'Book appointment', edit_appointment_path(appointment) %>
+            <%end%>
+        <%else%>
+            Booked Appointment
+        <% end %>
+      </div>
+    <%end%>
+    </div>
+</div>
+
+

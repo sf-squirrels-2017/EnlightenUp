@@ -39,3 +39,53 @@ table {
 }
 
 
+
+.simple-calendar {
+  .day {
+    border-color: black;
+  }
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {
+   color: black;
+
+   font-size: 15px;
+   background-color: #C9DDE1;
+  }
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+
+  .has-events {
+    color: black;
+   
+  }
+
+  .table-striped th{
+  color: grey;
+  background-color: #BAC0C1;
+  }
+
+  .table-striped {
+  color: #18667B;
+  } 
+  
+}
+
+h3:hover {
+  color: #A3E4D7;
+  background-color: grey;
+}
+

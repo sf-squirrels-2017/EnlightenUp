@@ -3,7 +3,7 @@
 
   <% appointments.each do |appointment| %>
     <div>
-      <%= link_to appointment.mentor.name, appointment%>:
+      <%= link_to appointment.mentor.name, appointment%>:  
       <%= appointment.start_time.strftime("%H:%M") %>
 
     </div>
